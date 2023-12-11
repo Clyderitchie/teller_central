@@ -1,0 +1,23 @@
+[
+    {
+        "id": "1",
+        "userName": "DrewRitchie",
+        "name": "Drew Ritchie",
+        "email": "DrewRitchie@bank.com",
+        "password": "Password1"
+    },
+    {
+        "id": "2",
+        "userName": "DylanReed",
+        "name": "Dylan Reed",
+        "email": "DylanReed@bank.com",
+        "password": "Password1"
+    },
+    {
+        "id": "3",
+        "userName": "ToriBrown",
+        "name": "Tori Brown",
+        "email": "ToriBrown@bank.com",
+        "password": "Password1"
+    }
+]

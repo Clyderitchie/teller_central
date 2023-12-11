@@ -1,0 +1,50 @@
+[
+    {
+        "firstName": "Clyde",
+        "lastName": "Ritchie",
+        "phoneNumber": "5406922244",
+        "email": "clyde@yahoo.com",
+        "address": "1234 main st, tacoma wa 98405",
+        "identification": "Driver's License: WDL12345"
+    },
+    {
+        "firstName": "Conny",
+        "lastName": "Ritchie",
+        "phoneNumber": "7036231136",
+        "email": "conny@yahoo.com",
+        "address": "1234 main st, front royal va 22630",
+        "identification": "Driver's License: VA43215"
+    },
+    {
+        "firstName": "Valentine",
+        "lastName": "Fry",
+        "phoneNumber": "2536238636",
+        "email": "valentine@gmail.com",
+        "address": "1234 south st, federal way wa 98995",
+        "identification": "Driver's License: WDL23451"
+    },
+    {
+        "firstName": "Apollo",
+        "lastName": "Smith",
+        "phoneNumber": "2536921186",
+        "email": "apollo@gmail.com",
+        "address": "4321 N L ST, tacoma wa 98405",
+        "identification": "Driver's License: WDL99887"
+    },
+    {
+        "firstName": "Tori",
+        "lastName": "Smith",
+        "phoneNumber": "3608670011",
+        "email": "tori@yahoo.com",
+        "address": "4321 N L ST, tacoma wa 98405",
+        "identification": "Driver's License: WDL00003"
+    },
+    {
+        "firstName": "Robert",
+        "lastName": "Ritchie",
+        "phoneNumber": "5406362244",
+        "email": "triumph@yahoo.com",
+        "address": "1234 main st, front royal va 22630",
+        "identification": "Driver's License: VA78789"
+    }
+]
