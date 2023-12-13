@@ -1,41 +1,32 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../../config/connection');
 
-class PersonalService extends Model {};
+class SafetyDepositBox extends Model {};
 
-PersonalService.init(
+SafetyDepositBox.init(
     {
         id: {
             type: DataTypes.INTEGER,
             primaryKey: true,
             autoIncrement: true
         },
-        cashManagement: {
+        small: {
             type: DataTypes.BOOLEAN,
-            defaultValue: true,
+            defaultValue: false,
             allowNull: true,
-            references: {
-                model: 'cashManagement',
-                key: 'id'
-            }
         },
-        overdraftProtection: {
+        large: {
             type: DataTypes.BOOLEAN,
-            defaultValue: true,
+            defaultValue: false,
             allowNull: true,
-            references: {
-                model: 'overdraft',
-                key: 'id'
-            }
         },
-    }, 
+    },
     {
         sequelize,
         timestamps: false,
         freezeTableName: true,
         underscored: true,
-        modelName: 'personalService',
-    }
-);
+        modelName: 'safetyDepositBox',
+    });
 
-module.exports = PersonalService;
+module.exports = SafetyDepositBox;

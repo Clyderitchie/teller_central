@@ -1,41 +1,33 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../../config/connection');
 
-class PersonalService extends Model {};
+class CashManagement extends Model { };
 
-PersonalService.init(
+CashManagement.init(
     {
         id: {
             type: DataTypes.INTEGER,
             primaryKey: true,
-            autoIncrement: true
+            autoIncrement: true,
         },
-        cashManagement: {
+        privateBanking: {
             type: DataTypes.BOOLEAN,
             defaultValue: true,
             allowNull: true,
-            references: {
-                model: 'cashManagement',
-                key: 'id'
-            }
         },
-        overdraftProtection: {
+        treasuryManagement: {
             type: DataTypes.BOOLEAN,
             defaultValue: true,
             allowNull: true,
-            references: {
-                model: 'overdraft',
-                key: 'id'
-            }
-        },
-    }, 
+        }
+    },
     {
         sequelize,
         timestamps: false,
         freezeTableName: true,
         underscored: true,
-        modelName: 'personalService',
+        modelName: 'cashManagement',
     }
 );
 
-module.exports = PersonalService;
+module.exports = CashManagement;

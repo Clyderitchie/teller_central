@@ -14,16 +14,38 @@ BusinessService.init(
             type: DataTypes.BOOLEAN,
             defaultValue: false,
             allowNull: true,
-            // references: {
-            //     model: 'overdraftProtection',
-            //     key: 'id'
-            // }
+            references: {
+                model: 'overdraft',
+                key: 'id'
+            }
         },
         payroll: {
             type: DataTypes.BOOLEAN,
             defaultValue: false,
             allowNull: true,
+            references: {
+                model: 'payroll',
+                key: 'id'
+            },
         },
+        cashManagement: {
+            type: DataTypes.BOOLEAN,
+            defaultValue: true,
+            allowNull: true,
+            references: {
+                model: 'cashManagement',
+                key: 'id'
+            },
+        },
+        remoteCapture: {
+            type: DataTypes.BOOLEAN,
+            defaultValue: true,
+            allowNull: true,
+            references: {
+                model: 'remoteCapture',
+                key: 'id'
+            },
+        }
     },
     {
         sequelize,

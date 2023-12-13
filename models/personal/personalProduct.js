@@ -1,7 +1,7 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../../config/connection');
 
-class PersonalProduct extends Model {};
+class PersonalProduct extends Model { };
 
 PersonalProduct.init(
     {
@@ -10,28 +10,41 @@ PersonalProduct.init(
             primaryKey: true,
             autoIncrement: true
         },
-        personalDebitCards: {
+        debitCards: {
             type: DataTypes.BOOLEAN,
             defaultValue: false,
             allowNull: true,
-            // references: {
-            //     model: 'debitCard',
-            //     key: 'id'
-            // }
+            references: {
+                model: 'debitCard',
+                key: 'id'
+            },
         },
-        personalCreditCards: {
+        creditCards: {
             type: DataTypes.BOOLEAN,
             defaultValue: false,
             allowNull: true,
-            // references: {
-            //     model: 'creditCard',
-            //     key: 'id'
-            // },
+            references: {
+                model: 'creditCard',
+                key: 'id'
+            },
         },
         onlineBanking: {
             type: DataTypes.BOOLEAN,
             defaultValue: false,
-            allowNull: true
+            allowNull: true,
+            references: {
+                model: 'onlineBanking',
+                key: 'id'
+            },
+        },
+        safetyDepositBox: {
+            type: DataTypes.BOOLEAN,
+            defaultValue: false,
+            allowNull: true,
+            references: {
+                model: 'safetyDepositBox',
+                key: 'id'
+            },
         },
     },
     {
