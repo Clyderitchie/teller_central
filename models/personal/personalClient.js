@@ -1,9 +1,9 @@
 const { Model, DataTypes } = require('sequelize');
-const sequelize = require('../config/connection');
+const sequelize = require('../../config/connection');
 
-class Client extends Model {};
+class PersonalClient extends Model {};
 
-Client.init(
+PersonalClient.init(
     {
         id: {
             type: DataTypes.INTEGER,
@@ -47,8 +47,8 @@ Client.init(
         timestamps: false,
         freezeTableName: true,
         underscored: true,
-        modelName: 'client',
+        modelName: 'personalClient',
     }
 );
 
-module.exports = Client;
+module.exports = PersonalClient;

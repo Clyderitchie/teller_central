@@ -1,9 +1,9 @@
 const { Model, DataTypes } = require('sequelize');
-const sequelize = require('../config/connection');
+const sequelize = require('../../config/connection');
 
-class Checking extends Model {};
+class PersonalChecking extends Model {};
 
-Checking.init(
+PersonalChecking.init(
     {
         id: {
             type: DataTypes.INTEGER,
@@ -30,7 +30,7 @@ Checking.init(
             defaultValue: false,
             allowNull: true
         },
-        mm_type: {
+        moneyMarket: {
             type: DataTypes.BOOLEAN,
             defaultValue: false,
             allowNull: true,
@@ -45,8 +45,8 @@ Checking.init(
         timestamps: false,
         freezeTableName: true,
         underscored: true,
-        modelName: 'checking',
+        modelName: 'personalChecking',
     }
 );
 
-module.exports = Checking;
+module.exports = PersonalChecking;

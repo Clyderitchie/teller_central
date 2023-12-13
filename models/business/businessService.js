@@ -1,5 +1,5 @@
 const { Model, DataTypes } = require('sequelize');
-const sequelize = require('../config/connection');
+const sequelize = require('../../config/connection');
 
 class BusinessService extends Model { };
 
@@ -30,7 +30,7 @@ BusinessService.init(
         timestamps: false,
         freezeTableName: true,
         underscored: true,
-        modelName: 'businessAccount',
+        modelName: 'businessService',
     }
 );
 

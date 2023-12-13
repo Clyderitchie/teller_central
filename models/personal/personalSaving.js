@@ -1,37 +1,38 @@
 const { Model, DataTypes } = require('sequelize');
-const sequelize = require('../config/connection');
+const sequelize = require('../../config/connection');
 
-class Product extends Model {};
+class PersonalSaving extends Model { };
 
-Product.init(
+PersonalSaving.init(
     {
         id: {
             type: DataTypes.INTEGER,
             primaryKey: true,
-            autoIncrement: true
+            autoIncrement: true,
         },
-        debitCards: {
-            type: DataTypes.BOOLEAN,
-            defaultValue: false,
-            allowNull: true,
-            // references: {
-            //     model: 'debitCard',
-            //     key: 'id'
-            // }
-        },
-        onlineBanking: {
+        basic: {
             type: DataTypes.BOOLEAN,
             defaultValue: false,
             allowNull: true
         },
-        creditCards: {
+        highYield: {
+            type: DataTypes.BOOLEAN,
+            defaultValue: false,
+            allowNull: true
+        },
+        platinum: {
+            type: DataTypes.BOOLEAN,
+            defaultValue: false,
+            allowNull: true
+        },
+        cd_type: {
             type: DataTypes.BOOLEAN,
             defaultValue: false,
             allowNull: true,
             // references: {
-            //     model: 'creditCard',
+            //     model 'cd',
             //     key: 'id'
-            // },
+            // }
         }
     },
     {
@@ -39,8 +40,8 @@ Product.init(
         timestamps: false,
         freezeTableName: true,
         underscored: true,
-        modelName: 'product',
+        modelName: 'personalSaving',
     }
 );
 
-module.exports = Product;
+module.exports = PersonalSaving;

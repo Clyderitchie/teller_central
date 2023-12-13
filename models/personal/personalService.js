@@ -1,41 +1,41 @@
 const { Model, DataTypes } = require('sequelize');
-const sequelize = require('../config/connection');
+const sequelize = require('../../config/connection');
 
-class BusinessProduct extends Model {};
+class PersonalService extends Model {};
 
-BusinessProduct.init(
+PersonalService.init(
     {
         id: {
             type: DataTypes.INTEGER,
             primaryKey: true,
-            autoIncrement: true,
+            autoIncrement: true
         },
-        businessDebitCard: {
+        cashManagement: {
             type: DataTypes.BOOLEAN,
-            defaultValue: false,
+            defaultValue: true,
             allowNull: true,
             // references: {
-            //     model: 'debitCard',
+            //     model: 'cashManagement',
             //     key: 'id'
             // }
         },
-        businessCreditCard: {
+        overdraftProtection: {
             type: DataTypes.BOOLEAN,
-            defaultValue: false,
+            defaultValue: true,
             allowNull: true,
             // references: {
-            //     model: 'creditCard',
+            //     model: 'overdraftProtection',
             //     key: 'id'
             // }
         },
-    },
+    }, 
     {
         sequelize,
         timestamps: false,
         freezeTableName: true,
         underscored: true,
-        modelName: 'businessAccount',
+        modelName: 'personalService',
     }
 );
 
-module.exports = BusinessProduct;
+module.exports = PersonalService;

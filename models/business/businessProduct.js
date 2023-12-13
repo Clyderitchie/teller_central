@@ -1,52 +1,39 @@
 const { Model, DataTypes } = require('sequelize');
-const sequelize = require('../config/connection');
+const sequelize = require('../../config/connection');
 
-class BusinessAccount extends Model {};
+class BusinessProduct extends Model {};
 
-BusinessAccount.init(
+BusinessProduct.init(
     {
         id: {
             type: DataTypes.INTEGER,
             primaryKey: true,
             autoIncrement: true,
         },
-        businessChecking: {
+        businessDebitCard: {
             type: DataTypes.BOOLEAN,
             defaultValue: false,
             allowNull: true,
             // references: {
-            //     model: 'businessChecking',
+            //     model: 'debitCard',
             //     key: 'id'
             // }
         },
-        businessLoan: {
+        businessCreditCard: {
             type: DataTypes.BOOLEAN,
             defaultValue: false,
             allowNull: true,
             // references: {
-            //     model: 'businessLoan',
+            //     model: 'creditCard',
             //     key: 'id'
             // }
         },
-        businessProducts: {
+        businessOnlineBanking: {
             type: DataTypes.BOOLEAN,
             defaultValue: false,
-            allowNull: true,
-            // references: {
-            //     model: 'businessProduct',
-            //     key:'id'
-            // }
+            allowNull: true
         },
-        businessService: {
-            type: DataTypes.BOOLEAN,
-            defaultValue: false,
-            allowNull: true,
-            // references: {
-            //     model: 'businessService',
-            //     key: 'id'
-            // }
-        }
-    }, 
+    },
     {
         sequelize,
         timestamps: false,
@@ -56,4 +43,4 @@ BusinessAccount.init(
     }
 );
 
-module.exports = BusinessAccount;
+module.exports = BusinessProduct;

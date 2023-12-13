@@ -1,44 +1,42 @@
 const { Model, DataTypes } = require('sequelize');
-const sequelize = require('../config/connection');
+const sequelize = require('../../config/connection');
 
-class Account extends Model {};
+class PersonalAccount extends Model { };
 
-Account.init(
+PersonalAccount.init(
     {
-        account_owner: {
+        id: {
             type: DataTypes.INTEGER,
-            references: {
-                model: 'client',
-                key: 'id'
-            },
+            autoIncrement: true,
+            primaryKey: true
         },
-        checking: {
+        personalChecking: {
             type: DataTypes.BOOLEAN,
             defaultValue: false,
         },
-        saving: {
+        personalSaving: {
             type: DataTypes.BOOLEAN,
             defaultValue: false,
         },
-        loans: {
+        personalLoans: {
             type: DataTypes.BOOLEAN,
             defaultValue: false,
         },
-        products: {
+        personalProducts: {
             type: DataTypes.STRING,
             allowNull: false,
         },
-        services: {
+        personalServices: {
             type: DataTypes.STRING,
             allowNull: true
         }
-    }, 
+    },
     {
         sequelize,
         timestamps: false,
         freezeTableName: true,
         underscored: true,
-        modelName: 'account',
+        modelName: 'personalAccount',
     });
 
-module.exports = Account
+module.exports = PersonalAccount

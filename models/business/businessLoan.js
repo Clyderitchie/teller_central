@@ -1,43 +1,38 @@
 const { Model, DataTypes } = require('sequelize');
-const sequelize = require('../config/connection');
+const sequelize = require('../../config/connection');
 
-class Loan extends Model { };
+class BusinessLoan extends Model { };
 
-Loan.init(
+BusinessLoan.init(
     {
         id: {
             type: DataTypes.INTEGER,
+            primaryKey: true,
             autoIncrement: true,
-            primaryKey: true
         },
-        lineOfCredit: {
-            type: DataTypes.BOOLEAN,
-            allowNull: true,
-            defaultValue: false
-        },
-        mortgage: {
+        sbaLoan: {
             type: DataTypes.BOOLEAN,
             defaultValue: false,
             allowNull: true,
         },
-        auto: {
+        businessLineOfCredit: {
             type: DataTypes.BOOLEAN,
             defaultValue: false,
             allowNull: true,
         },
-        heloc: {
+        smallEquipment: {
             type: DataTypes.BOOLEAN,
             defaultValue: false,
             allowNull: true,
-        }
-    }, 
+        },
+    },
     {
         sequelize,
         timestamps: false,
         freezeTableName: true,
         underscored: true,
-        modelName: 'loan',
+        modelName: 'businessAccount',
     }
 );
 
-module.exports = Loan;
+module.exports = BusinessLoan;
