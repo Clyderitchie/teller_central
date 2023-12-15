@@ -33,19 +33,19 @@ PersonalClient.init(
         accountType: {
             type: DataTypes.STRING,
             allowNull: false,
-            references: {
-                model: 'personalAccount',
-                key: 'id'
-            },
+            // references: {
+            //     model: 'personalAccount',
+            //     key: 'id'
+            // },
         },
         identification: {
             type: DataTypes.STRING,
             allowNull: false,
             unique: true,
-            references: {
-                model: 'identification',
-                key: 'id'
-            },
+            // references: {
+            //     model: 'identification',
+            //     key: 'id'
+            // },
         },
     }, 
     {

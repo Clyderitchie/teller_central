@@ -31,7 +31,7 @@ BusinessClient.init(
             },
         },
         accountType: {
-            type: DataTypes.STRING,
+            type: DataTypes.INTEGER,
             allowNull: false,
             references: {
                 model: 'businessAccount',
@@ -42,10 +42,10 @@ BusinessClient.init(
             type: DataTypes.STRING,
             allowNull: false,
             unique: true,
-            references: {
-                model: 'identification',
-                key: 'id'
-            },
+            // references: {
+            //     model: 'identification',
+            //     key: 'id'
+            // },
         },
     }, 
     {

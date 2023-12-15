@@ -14,28 +14,28 @@ BusinessProduct.init(
             type: DataTypes.BOOLEAN,
             defaultValue: false,
             allowNull: true,
-            references: {
-                model: 'debitCard',
-                key: 'id'
-            },
+            // references: {
+            //     model: 'debitCard',
+            //     key: 'id'
+            // },
         },
         businessCreditCard: {
             type: DataTypes.BOOLEAN,
             defaultValue: false,
             allowNull: true,
-            references: {
-                model: 'creditCard',
-                key: 'id'
-            },
+            // references: {
+            //     model: 'creditCard',
+            //     key: 'id'
+            // },
         },
         businessOnlineBanking: {
             type: DataTypes.BOOLEAN,
             defaultValue: false,
             allowNull: true,
-            references: {
-                model: 'onlineBanking',
-                key: 'id'
-            },
+            // references: {
+            //     model: 'onlineBanking',
+            //     key: 'id'
+            // },
         },
     },
     {
