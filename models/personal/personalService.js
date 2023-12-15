@@ -11,22 +11,22 @@ PersonalService.init(
             autoIncrement: true
         },
         cashManagement: {
-            type: DataTypes.BOOLEAN,
+            type: DataTypes.INTEGER,
             defaultValue: true,
             allowNull: true,
-            // references: {
-            //     model: 'cashManagement',
-            //     key: 'id'
-            // }
+            references: {
+                model: 'cashManagement',
+                key: 'id'
+            }
         },
         overdraftProtection: {
-            type: DataTypes.BOOLEAN,
+            type: DataTypes.INTEGER,
             defaultValue: true,
             allowNull: true,
-            // references: {
-            //     model: 'overdraft',
-            //     key: 'id'
-            // }
+            references: {
+                model: 'overdraft',
+                key: 'id'
+            }
         },
     }, 
     {

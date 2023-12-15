@@ -21,10 +21,10 @@ const DebitCard = require('../models/product/debitcard');
 const OnlineBanking = require('../models/product/onlineBanking');
 const SafetyDepositBox = require('../models/product/safetyDepositBox');
 // Service table imports 
-// const CashManagement = require('../models/service/cashManagement');
-// const RemoteCapture = require('../models/service/remoteCapture');
-// const Payroll = require('../models/service/payroll');
-// const Overdraft = require('../models/service/overdraft');
+const CashManagement = require('../models/service/cashManagement');
+const RemoteCapture = require('../models/service/remoteCapture');
+const Payroll = require('../models/service/payroll');
+const Overdraft = require('../models/service/overdraft');
 
 // Business table associations
 BusinessClient.hasMany(BusinessAccount, {
@@ -137,4 +137,84 @@ SafetyDepositBox.belongsTo(PersonalProduct, {
     onDelete: 'CASCADE'
 });
 
-module.exports = { BusinessAccount, BusinessChecking, BusinessLoan, BusinessProduct, BusinessService, BusinessClient, PersonalClient, Teller, PersonalAccount, PersonalChecking, PersonalLoan, PersonalProduct, PersonalSaving, PersonalService, CreditCard, DebitCard, OnlineBanking, SafetyDepositBox };
+// Service table associations
+// Cash management associations
+PersonalService.hasMany(CashManagement, {
+    foreignKey: 'cashManagement',
+    as: 'perCashManagement',
+    onDelete: 'CASCADE'
+});
+
+CashManagement.belongsTo(PersonalService, {
+    foreignKey: 'cashManagement',
+    as: 'cashManagementPer',
+    onDelete: 'CASCADE'
+});
+
+BusinessService.hasMany(CashManagement, {
+    foreignKey: 'cashManagement',
+    as: 'busCashManagement',
+    onDelete: 'CASCADE'
+});
+
+CashManagement.belongsTo(BusinessService, {
+    foreignKey: 'cashManagement',
+    as: 'cashManagementBus',
+    onDelete: 'CASCADE'
+});
+
+// Remote Capture associations
+BusinessService.hasMany(RemoteCapture, {
+    foreignKey: 'remoteCapture',
+    as: 'busRemoteCapture',
+    onDelete: 'CASCADE'
+});
+
+RemoteCapture.belongsTo(BusinessService, {
+    foreignKey: 'remoteCapture',
+    as: 'remoteCaptureBus',
+    onDelete: 'CASCADE'
+});
+
+// Payroll associations
+BusinessService.hasMany(Payroll, {
+    foreignKey: 'payroll',
+    as: 'busPayrool',
+    onDelete: 'CASCADE'
+});
+
+Payroll.belongsTo(BusinessService, {
+    foreignKey: 'payroll',
+    as: 'payroolBus',
+    onDelete: 'CASCADE'
+});
+
+// Overdraft associations
+BusinessService.hasMany(Overdraft, {
+    foreignKey: 'overdraft',
+    as: 'busOverdraft',
+    onDelete: 'CASCADE'
+});
+
+Overdraft.belongsTo(BusinessService, {
+    foreignKey: 'overdraft',
+    as: 'overdraftBus',
+    onDelete: 'CASCADE'
+});
+
+PersonalService.hasMany(Overdraft, {
+    foreignKey: 'overdraft',
+    as: 'perOverdraft',
+    onDelete: 'CASCADE'
+});
+
+Overdraft.belongsTo(PersonalService, {
+    foreignKey: 'overdraft',
+    as: 'overdraftPer',
+    onDelete: 'CASCADE'
+});
+
+module.exports = {
+    BusinessAccount, BusinessChecking, BusinessLoan, BusinessProduct, BusinessService, BusinessClient, PersonalClient, Teller, PersonalAccount, PersonalChecking, PersonalLoan, PersonalProduct, PersonalSaving, PersonalService, CreditCard, DebitCard, OnlineBanking, SafetyDepositBox, CashManagement, RemoteCapture,
+    Payroll, Overdraft
+};

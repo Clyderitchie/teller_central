@@ -11,40 +11,40 @@ BusinessService.init(
             autoIncrement: true,
         },
         overDraftProtection: {
-            type: DataTypes.BOOLEAN,
+            type: DataTypes.INTEGER,
             defaultValue: false,
             allowNull: true,
-            // references: {
-            //     model: 'overdraft',
-            //     key: 'id'
-            // }
+            references: {
+                model: 'overdraft',
+                key: 'id'
+            }
         },
         payroll: {
-            type: DataTypes.BOOLEAN,
+            type: DataTypes.INTEGER,
             defaultValue: false,
             allowNull: true,
-            // references: {
-            //     model: 'payroll',
-            //     key: 'id'
-            // },
+            references: {
+                model: 'payroll',
+                key: 'id'
+            },
         },
         cashManagement: {
-            type: DataTypes.BOOLEAN,
+            type: DataTypes.INTEGER,
             defaultValue: true,
             allowNull: true,
-            // references: {
-            //     model: 'cashManagement',
-            //     key: 'id'
-            // },
+            references: {
+                model: 'cashManagement',
+                key: 'id'
+            },
         },
         remoteCapture: {
-            type: DataTypes.BOOLEAN,
+            type: DataTypes.INTEGER,
             defaultValue: true,
             allowNull: true,
-            // references: {
-            //     model: 'remoteCapture',
-            //     key: 'id'
-            // },
+            references: {
+                model: 'remoteCapture',
+                key: 'id'
+            },
         }
     },
     {
