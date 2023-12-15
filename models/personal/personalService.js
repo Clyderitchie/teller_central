@@ -14,19 +14,19 @@ PersonalService.init(
             type: DataTypes.BOOLEAN,
             defaultValue: true,
             allowNull: true,
-            references: {
-                model: 'cashManagement',
-                key: 'id'
-            }
+            // references: {
+            //     model: 'cashManagement',
+            //     key: 'id'
+            // }
         },
         overdraftProtection: {
             type: DataTypes.BOOLEAN,
             defaultValue: true,
             allowNull: true,
-            references: {
-                model: 'overdraft',
-                key: 'id'
-            }
+            // references: {
+            //     model: 'overdraft',
+            //     key: 'id'
+            // }
         },
     }, 
     {
