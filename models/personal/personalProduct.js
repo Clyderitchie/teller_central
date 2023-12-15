@@ -11,40 +11,40 @@ PersonalProduct.init(
             autoIncrement: true
         },
         debitCards: {
-            type: DataTypes.BOOLEAN,
+            type: DataTypes.INTEGER,
             defaultValue: false,
             allowNull: true,
-            // references: {
-            //     model: 'debitCard',
-            //     key: 'id'
-            // },
+            references: {
+                model: 'debitCard',
+                key: 'id'
+            },
         },
         creditCards: {
-            type: DataTypes.BOOLEAN,
+            type: DataTypes.INTEGER,
             defaultValue: false,
             allowNull: true,
-            // references: {
-            //     model: 'creditCard',
-            //     key: 'id'
-            // },
+            references: {
+                model: 'creditCard',
+                key: 'id'
+            },
         },
         onlineBanking: {
-            type: DataTypes.BOOLEAN,
+            type: DataTypes.INTEGER,
             defaultValue: false,
             allowNull: true,
-            // references: {
-            //     model: 'onlineBanking',
-            //     key: 'id'
-            // },
+            references: {
+                model: 'onlineBanking',
+                key: 'id'
+            },
         },
         safetyDepositBox: {
-            type: DataTypes.BOOLEAN,
+            type: DataTypes.INTEGER,
             defaultValue: false,
             allowNull: true,
-            // references: {
-            //     model: 'safetyDepositBox',
-            //     key: 'id'
-            // },
+            references: {
+                model: 'safetyDepositBox',
+                key: 'id'
+            },
         },
     },
     {
