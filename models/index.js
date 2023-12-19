@@ -19,19 +19,21 @@ PersonalClient.belongsToMany(PersonalAccount, {
     sourceKey: 'accounts' // SourceKey has a default primary for PersonalAccount and different key for PersonalClient
 });
 
-PersonalAccount.belongsToMany(PersonalClient, { 
-    through: 'AccountInfo' ,
+PersonalAccount.belongsToMany(PersonalClient, {
+    through: 'AccountInfo',
     foreignKey: 'accountId',
     as: 'clients',
     targetKey: 'accounts' // TargetKey has different primary for PersonalAccount and default for PersonalClient
 });
 
 // AccountInfo.belongsTo(PersonalClient, {
-    
+//     foreignKey: 'accountId',
+//     as: 'clients'
 // });
 
 // AccountInfo.belongsTo(PersonalAccount, {
-    
+//     foreignKey: 'clientId',
+//     as: 'client_accounts'
 // });
 
 
@@ -42,29 +44,29 @@ PersonalAccount.belongsToMany(PersonalClient, {
 
 // PersonalAccount.belongsTo(PersonalClient);
 
-PersonalClient.hasMany(PersonalProduct, {
-    foreignKey: 'client_id',
-    onDelete: 'SET NULL',
-});
+// PersonalClient.hasMany(PersonalProduct, {
+//     foreignKey: 'client_id',
+//     onDelete: 'SET NULL',
+// });
 
-PersonalProduct.belongsTo(PersonalClient);
+// PersonalProduct.belongsTo(PersonalClient);
 
-PersonalClient.hasMany(PersonalService, {
-    foreignKey: 'client_id',
-    onDelete: 'SET NULL'
-});
+// PersonalClient.hasMany(PersonalService, {
+//     foreignKey: 'client_id',
+//     onDelete: 'SET NULL'
+// });
 
-PersonalService.belongsTo(PersonalClient);
+// PersonalService.belongsTo(PersonalClient);
 
-PersonalClient.hasMany(PersonalLoan, {
-    foreignKey: 'personalLoan',
-    onDelete: 'SET NULL'
-});
+// PersonalClient.hasMany(PersonalLoan, {
+//     foreignKey: 'personalLoan',
+//     onDelete: 'SET NULL'
+// });
 
-PersonalLoan.belongsTo(PersonalClient, {
-    foreignKey: 'personalLoan',
-    onDelete: 'SET NULL'
-});
+// PersonalLoan.belongsTo(PersonalClient, {
+//     foreignKey: 'personalLoan',
+//     onDelete: 'SET NULL'
+// });
 
 
 
