@@ -1,16 +1,15 @@
 <div class="container">
-  <h1>Hello</h1>
-  <div class="row">
-    {{#each clients}}
-      <h2>{{name}}</h2>
-      <ul>
-        {{#each accounts}}
-          <li>{{checkingType}}</li>
-          <li>{{savingType}}</li>
-          <li>{{balance}}</li>
-          <!-- Render other account properties as needed -->
-        {{/each}}
-      </ul>
+  <h1>Client List</h1>
+
+{{#each clients}}
+  <div>
+    <h2>Client Name: {{name}}</h2>
+    <h3>Account Info:</h3>
+    {{#each AccountInfos}}
+      <p>Client ID: {{client_id}}</p>
+      {{!-- <p>Account ID: {{account_id}}</p> --}}
+      <p>Balance: {{balance}}</p>
     {{/each}}
   </div>
+{{/each}}
 </div>

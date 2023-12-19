@@ -1,21 +1,28 @@
 const router = require('express').Router();
 const withAuth = require('../utils/auth');
-const { Client, Account } = require('../models');
+const { Client, Account, AccountInfo } = require('../models');
 
-// Renders the login screen for a teller
+// Renders the homepage handlebar and able to access
+// the account model to also have that data on the front end
 router.get('/', async (req, res) => {
     try {
         const client = await Client.findAll({
-            include: [{
-                model: Account,
-                attributes: ['checkingType', 'savingType', 'balance'],
-            },],
+            include: [
+                {
+                    model: Account,
+                    attributes: ['checkingType', 'savingType'],
+                },
+                {
+                    model: AccountInfo,
+                    attributes: ['client_id', 'account_id', 'balance']
+                }
+            ],
         });
         const clients = client.map(p => p.get({ plain: true }));
         console.log('clients', clients);
         res.render('homepage', {
             clients
-        })   
+        })
     } catch (err) {
         console.log(err.message);
         res.status(500).json(err);

@@ -20,13 +20,6 @@ Account.init(
             type: DataTypes.STRING,
             allowNull: true
         },
-        balance: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-            validate: {
-                isNumeric: true
-            },
-        },
         clientId: {
             type: DataTypes.INTEGER,
             allowNull: true,
