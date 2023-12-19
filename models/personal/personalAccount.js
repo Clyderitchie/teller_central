@@ -5,31 +5,12 @@ class PersonalAccount extends Model { };
 
 PersonalAccount.init(
     {
-        id: {
-            type: DataTypes.INTEGER,
-            autoIncrement: true,
-            primaryKey: true
-        },
-        personalChecking: {
-            type: DataTypes.BOOLEAN,
-            defaultValue: false,
-        },
-        personalSaving: {
-            type: DataTypes.BOOLEAN,
-            defaultValue: false,
-        },
-        personalLoans: {
-            type: DataTypes.BOOLEAN,
-            defaultValue: false,
-        },
-        personalProducts: {
-            type: DataTypes.STRING,
-            allowNull: false,
-        },
-        personalServices: {
-            type: DataTypes.STRING,
-            allowNull: true
-        }
+       accounts: {
+        type: DataTypes.STRING,
+        primaryKey: true,
+        allowNull: false,
+        unique: false,
+       },
     },
     {
         sequelize,

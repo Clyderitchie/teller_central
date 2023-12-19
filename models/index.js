@@ -1,220 +1,71 @@
-// Business table imports
-const BusinessAccount = require('../models/business/businessAccount');
-const BusinessChecking = require('../models/business/businessChecking');
-const BusinessLoan = require('../models/business/businessLoan');
-const BusinessProduct = require('../models/business/businessProduct');
-const BusinessService = require('../models/business/businessService');
-const BusinessClient = require('../models/clients/businessClient');
-// Employee table imports
-const Teller = require('../models/employee/teller');
-// Personal table imports
+const PersonalClient = require('../models/personal/personalClient');
 const PersonalAccount = require('../models/personal/personalAccount');
-const PersonalChecking = require('../models/personal/personalChecking');
-const PersonalClient = require('../models/clients/personalClient');
-const PersonalLoan = require('../models/personal/Personalloan');
+const PersonalLoan = require('../models/personal/PersonalLoan');
 const PersonalProduct = require('../models/personal/personalProduct');
-const PersonalSaving = require('../models/personal/personalSaving');
 const PersonalService = require('../models/personal/personalService');
-// Product table imports
-const CreditCard = require('../models/product/creditCard');
-const DebitCard = require('../models/product/debitcard');
-const OnlineBanking = require('../models/product/onlineBanking');
-const SafetyDepositBox = require('../models/product/safetyDepositBox');
-// Service table imports 
-const CashManagement = require('../models/service/cashManagement');
-const RemoteCapture = require('../models/service/remoteCapture');
-const Payroll = require('../models/service/payroll');
-const Overdraft = require('../models/service/overdraft');
+const AccountInfo = require('../models/personal/accountInfo');
 
-// Business table associations
-BusinessClient.hasMany(BusinessAccount, {
-    foreignKey: 'businessAccount',
-    onDelete: 'CASCADE'
+// My goal for these two associations is to have the AccountInfo table (junction table) to store the information of the account owner (personalClient name column),
+// and the accountId (personalAccount accounts, storing as string to store account types name), and for the final column of the AccountInfo table 
+// I would like the balance column to simply store the balance of each of the users accounts that they have
+// Example: Account_Owner: Dale Ritchie
+// accountId, Basic and Savings
+// Balances: $1,500 in basic and $3,000 in the savings account
+// Is this possible to do with a junction table or do I need to back to the belongs to many and belongsTo associations?
+PersonalClient.belongsToMany(PersonalAccount, {
+    through: 'AccountInfo',
+    foreignKey: 'clientId',
+    as: 'client_accounts',
+    sourceKey: 'accounts' // SourceKey has a default primary for PersonalAccount and different key for PersonalClient
 });
 
-BusinessAccount.belongsTo(BusinessClient, {
-    foreignKey: 'businessAccount',
-    onDelete: 'CASCADE'
+PersonalAccount.belongsToMany(PersonalClient, { 
+    through: 'AccountInfo' ,
+    foreignKey: 'accountId',
+    as: 'clients',
+    targetKey: 'accounts' // TargetKey has different primary for PersonalAccount and default for PersonalClient
 });
 
-// Personal table associations
-PersonalClient.hasMany(PersonalAccount, {
-    foreignKey: 'personalAccount',
-    onDelete: 'CASCADE'
+// AccountInfo.belongsTo(PersonalClient, {
+    
+// });
+
+// AccountInfo.belongsTo(PersonalAccount, {
+    
+// });
+
+
+// PersonalClient.hasMany(PersonalAccount, {
+//     foreignKey: 'account_id',
+//     onDelete: 'SET NULL',
+// });
+
+// PersonalAccount.belongsTo(PersonalClient);
+
+PersonalClient.hasMany(PersonalProduct, {
+    foreignKey: 'client_id',
+    onDelete: 'SET NULL',
 });
 
-PersonalAccount.belongsTo(PersonalClient, {
-    foreignKey: 'personalAccount',
-    onDelete: 'CASCADE'
+PersonalProduct.belongsTo(PersonalClient);
+
+PersonalClient.hasMany(PersonalService, {
+    foreignKey: 'client_id',
+    onDelete: 'SET NULL'
 });
 
-// Product table associations
-// Credit card associations
-PersonalProduct.hasMany(CreditCard, {
-    foreignKey: 'creditCard',
-    as: 'creditCardType',
-    onDelete: 'CASCADE'
+PersonalService.belongsTo(PersonalClient);
+
+PersonalClient.hasMany(PersonalLoan, {
+    foreignKey: 'personalLoan',
+    onDelete: 'SET NULL'
 });
 
-CreditCard.belongsTo(PersonalProduct, {
-    foreignKey: 'creditCard',
-    as: 'creditCardType',
-    onDelete: 'CASCADE'
+PersonalLoan.belongsTo(PersonalClient, {
+    foreignKey: 'personalLoan',
+    onDelete: 'SET NULL'
 });
 
-BusinessProduct.hasMany(CreditCard, {
-    foreignKey: 'creditCard',
-    as: 'businessCreditCardType',
-    onDelete: 'CASCADE'
-});
 
-CreditCard.belongsTo(BusinessProduct, {
-    foreignKey: 'creditCard',
-    as: 'businessCreditCardType',
-    onDelete: 'CASCADE'
-});
 
-// Debit card associations
-PersonalProduct.hasMany(DebitCard, {
-    foreignKey: 'debitCard',
-    as: 'personalDebitCard',
-    onDelete: 'CASCADE'
-});
-
-DebitCard.belongsTo(PersonalProduct, {
-    foreignKey: 'debitCard',
-    as: 'debitCardPersonal',
-    onDelete: 'CASCADE'
-});
-
-BusinessProduct.hasMany(DebitCard, {
-    foreignKey: 'debitCard',
-    as: 'busDebitCard',
-    onDelete: 'CASCADE'
-});
-
-DebitCard.belongsTo(BusinessProduct, {
-    foreignKey: 'debitCard',
-    as: 'debitCardBus',
-    onDelete: 'CASCADE'
-});
-
-// Online banking associations
-BusinessProduct.hasMany(OnlineBanking, {
-    foreignKey: 'onlineBanking',
-    as: 'busOnlineBanking',
-    onDelete: 'CASCADE'
-});
-
-OnlineBanking.belongsTo(BusinessProduct, {
-    foreignKey: 'onlineBanking',
-    as: 'onlineBankingBus',
-    onDelete: 'CASCADE'
-});
-
-PersonalProduct.hasMany(OnlineBanking, {
-    foreignKey: 'onlineBanking',
-    as: 'perOnlineBanking',
-    onDelete: 'CASCADE'
-});
-
-OnlineBanking.belongsTo(PersonalProduct, {
-    foreignKey: 'onlineBanking',
-    as: 'onlineBankingPer',
-    onDelete: 'CASCADE'
-});
-
-// Safety deposit box associations
-PersonalProduct.hasMany(SafetyDepositBox, {
-    foreignKey: 'safetyDepositBox',
-    as: 'SDB',
-    onDelete: 'CASCADE'
-});
-
-SafetyDepositBox.belongsTo(PersonalProduct, {
-    foreignKey: 'safetyDepositBox',
-    as: 'SDB',
-    onDelete: 'CASCADE'
-});
-
-// Service table associations
-// Cash management associations
-PersonalService.hasMany(CashManagement, {
-    foreignKey: 'cashManagement',
-    as: 'perCashManagement',
-    onDelete: 'CASCADE'
-});
-
-CashManagement.belongsTo(PersonalService, {
-    foreignKey: 'cashManagement',
-    as: 'cashManagementPer',
-    onDelete: 'CASCADE'
-});
-
-BusinessService.hasMany(CashManagement, {
-    foreignKey: 'cashManagement',
-    as: 'busCashManagement',
-    onDelete: 'CASCADE'
-});
-
-CashManagement.belongsTo(BusinessService, {
-    foreignKey: 'cashManagement',
-    as: 'cashManagementBus',
-    onDelete: 'CASCADE'
-});
-
-// Remote Capture associations
-BusinessService.hasMany(RemoteCapture, {
-    foreignKey: 'remoteCapture',
-    as: 'busRemoteCapture',
-    onDelete: 'CASCADE'
-});
-
-RemoteCapture.belongsTo(BusinessService, {
-    foreignKey: 'remoteCapture',
-    as: 'remoteCaptureBus',
-    onDelete: 'CASCADE'
-});
-
-// Payroll associations
-BusinessService.hasMany(Payroll, {
-    foreignKey: 'payroll',
-    as: 'busPayrool',
-    onDelete: 'CASCADE'
-});
-
-Payroll.belongsTo(BusinessService, {
-    foreignKey: 'payroll',
-    as: 'payroolBus',
-    onDelete: 'CASCADE'
-});
-
-// Overdraft associations
-BusinessService.hasMany(Overdraft, {
-    foreignKey: 'overdraft',
-    as: 'busOverdraft',
-    onDelete: 'CASCADE'
-});
-
-Overdraft.belongsTo(BusinessService, {
-    foreignKey: 'overdraft',
-    as: 'overdraftBus',
-    onDelete: 'CASCADE'
-});
-
-PersonalService.hasMany(Overdraft, {
-    foreignKey: 'overdraft',
-    as: 'perOverdraft',
-    onDelete: 'CASCADE'
-});
-
-Overdraft.belongsTo(PersonalService, {
-    foreignKey: 'overdraft',
-    as: 'overdraftPer',
-    onDelete: 'CASCADE'
-});
-
-module.exports = {
-    BusinessAccount, BusinessChecking, BusinessLoan, BusinessProduct, BusinessService, BusinessClient, PersonalClient, Teller, PersonalAccount, PersonalChecking, PersonalLoan, PersonalProduct, PersonalSaving, PersonalService, CreditCard, DebitCard, OnlineBanking, SafetyDepositBox, CashManagement, RemoteCapture,
-    Payroll, Overdraft
-};
+module.exports = { PersonalClient, PersonalAccount, PersonalLoan, PersonalProduct, PersonalService, AccountInfo };

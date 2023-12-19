@@ -10,41 +10,53 @@ PersonalProduct.init(
             primaryKey: true,
             autoIncrement: true
         },
-        debitCards: {
+        personalDebitCard: {
             type: DataTypes.INTEGER,
-            defaultValue: false,
             allowNull: true,
-            references: {
-                model: 'debitCard',
-                key: 'id'
+            validate: {
+                len: [12],
+                isNumeric: true,
             },
         },
-        creditCards: {
+        basicCashBack: {
             type: DataTypes.INTEGER,
-            defaultValue: false,
             allowNull: true,
-            references: {
-                model: 'creditCard',
-                key: 'id'
+            validate: {
+                len: [12],
+                isNumeric: true,
             },
         },
-        onlineBanking: {
+        travelRewards: {
             type: DataTypes.INTEGER,
-            defaultValue: false,
             allowNull: true,
-            references: {
-                model: 'onlineBanking',
-                key: 'id'
+            validate: {
+                len: [12],
+                isNumeric: true,
+            },
+        },
+        doubleThePoints: {
+            type: DataTypes.INTEGER,
+            allowNull: true,
+            validate: {
+                len: [12],
+                isNumeric: true,
             },
         },
         safetyDepositBox: {
             type: DataTypes.INTEGER,
             defaultValue: false,
             allowNull: true,
+            // references: {
+            //     model: 'safetyDepositBox',
+            //     key: 'id'
+            // },
+        },
+        client_id: {
+            type: DataTypes.INTEGER,
             references: {
-                model: 'safetyDepositBox',
+                model: 'personalClient',
                 key: 'id'
-            },
+            }
         },
     },
     {

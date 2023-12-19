@@ -10,13 +10,7 @@ DebitCard.init(
             autoIncrement: true,
             primaryKey: true
         },
-        personalDebitCard: {
-            type: DataTypes.STRING,
-            allowNull: true,
-            validate: {
-                len: [12]
-            },
-        },
+        
         businessDebitCard: {
             type: DataTypes.STRING,
             allowNull: true,

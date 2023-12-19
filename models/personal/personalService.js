@@ -1,7 +1,7 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../../config/connection');
 
-class PersonalService extends Model {};
+class PersonalService extends Model { };
 
 PersonalService.init(
     {
@@ -10,25 +10,48 @@ PersonalService.init(
             primaryKey: true,
             autoIncrement: true
         },
-        cashManagement: {
+        onlineBanking: {
             type: DataTypes.INTEGER,
+            defaultValue: false,
+            allowNull: true,
+            // references: {
+            //     model: 'onlineBanking',
+            //     key: 'id'
+            // },
+        },
+        privateBanking: {
+            type: DataTypes.BOOLEAN,
             defaultValue: true,
             allowNull: true,
+        },
+        treasuryManagement: {
+            type: DataTypes.BOOLEAN,
+            defaultValue: true,
+            allowNull: true,
+        },
+        bounceGuard: {
+            type: DataTypes.BOOLEAN,
+            defaultValue: false,
+            allowNull: true,
+        },
+        linkedAccount: {
+            type: DataTypes.BOOLEAN,
+            defaultValue: false,
+            allowNull: true,
+        },
+        positivePay: {
+            type: DataTypes.BOOLEAN,
+            defaultValue: false,
+            allowNull: true,
+        },
+        client_id: {
+            type: DataTypes.INTEGER,
             references: {
-                model: 'cashManagement',
+                model: 'personalClient',
                 key: 'id'
             }
         },
-        overdraftProtection: {
-            type: DataTypes.INTEGER,
-            defaultValue: true,
-            allowNull: true,
-            references: {
-                model: 'overdraft',
-                key: 'id'
-            }
-        },
-    }, 
+    },
     {
         sequelize,
         timestamps: false,

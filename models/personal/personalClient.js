@@ -5,15 +5,14 @@ class PersonalClient extends Model {};
 
 PersonalClient.init(
     {
-        id: {
-            type: DataTypes.INTEGER,
-            primaryKey: true,
-            autoIncrement: true,
-        },
         name: {
-          type: DataTypes.STRING,
-          allowNull: false,
-          unique: false  
+            type: DataTypes.STRING,
+            allowNull: false,
+            unique: false,
+            validate: {
+                notEmpty: true,
+                isAlpha: true
+            },
         },
         email: {
             type: DataTypes.STRING,
@@ -21,31 +20,38 @@ PersonalClient.init(
             unique: false,
             validate: {
                 isEmail: true,
+                notEmpty: true,
             },
         },
-        password: {
-            type: DataTypes.STRING,
-            allowNull: false,
-            validate: {
-                len: [8]
-            },
-        },
-        accountType: {
+        phoneNumber: {
             type: DataTypes.INTEGER,
             allowNull: false,
+            unique: false,
+            validate: {
+                isNumeric: true,
+            }
+        },
+        accounts: {
+            type: DataTypes.INTEGER,
+            autoIncrement: true,
+            allowNull: false,
+            primaryKey: true,
+        },
+        products: {
+            type: DataTypes.INTEGER,
+            allowNull: true,
+        },
+        services: {
+            type: DataTypes.INTEGER,
+            allowNull: true,
+        },
+        loanType: {
+            type: DataTypes.INTEGER,
+            allowNull: true,
             references: {
-                model: 'personalAccount',
+                model: 'personalLoan',
                 key: 'id'
             },
-        },
-        identification: {
-            type: DataTypes.STRING,
-            allowNull: false,
-            unique: true,
-            // references: {
-            //     model: 'identification',
-            //     key: 'id'
-            // },
         },
     }, 
     {

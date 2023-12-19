@@ -11,7 +11,7 @@ BusinessAccount.init(
             autoIncrement: true,
         },
         businessChecking: {
-            type: DataTypes.BOOLEAN,
+            type: DataTypes.INTEGER,
             defaultValue: false,
             allowNull: true,
             references: {

@@ -11,26 +11,34 @@ PersonalLoan.init(
             primaryKey: true
         },
         lineOfCredit: {
-            type: DataTypes.BOOLEAN,
+            type: DataTypes.INTEGER,
             allowNull: true,
-            defaultValue: false
+            validate: {
+                isNumeric: true,
+            }
         },
         mortgage: {
-            type: DataTypes.BOOLEAN,
-            defaultValue: false,
+            type: DataTypes.INTEGER,
             allowNull: true,
+            validate: {
+                isNumeric: true,
+            }
         },
         auto: {
-            type: DataTypes.BOOLEAN,
-            defaultValue: false,
+            type: DataTypes.INTEGER,
             allowNull: true,
+            validate: {
+                isNumeric: true,
+            }
         },
         heloc: {
-            type: DataTypes.BOOLEAN,
-            defaultValue: false,
+            type: DataTypes.INTEGER,
             allowNull: true,
+            validate: {
+                isNumeric: true,
+            }
         }
-    }, 
+    },
     {
         sequelize,
         timestamps: false,

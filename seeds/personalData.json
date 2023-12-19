@@ -1,0 +1,12 @@
+[
+    {
+        "id": 1,
+        "name": "Dale Ritchie",
+        "email": "doIt4Dale@email.com",
+        "phoneNumber": 6922244,
+        "accounts": "basic",
+        "products": "1",
+        "services": "4",
+        "loanType": null
+    }
+]
