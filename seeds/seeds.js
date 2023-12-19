@@ -1,15 +1,15 @@
 const sequelize = require('../config/connection');
-const { PersonalClient, PersonalAccount, PersonalLoan, PersonalProduct, PersonalService, AccountInfo } = require('../models');
+const { Client, Account } = require('../models');
 
 const personalData = require('./personalData.json');
-const accountData = require('./accountInfoData.json');
+const accountData = require('./accountData.json');
 
 const seedDatabase = async () => {
     await sequelize.sync({ force: true });
 
-    const personalClient = await PersonalClient.bulkCreate(personalData);
+    const personalClient = await Client.bulkCreate(personalData);
 
-    // const accountInfo = await AccountInfo.bulkCreate(accountData);
+    const accountInfo = await Account.bulkCreate(accountData);
 
 
     process.exit(0);

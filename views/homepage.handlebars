@@ -1,10 +1,16 @@
 <div class="container">
-    <h1>Hello</h1>
-
-    <div class="row">
-        {{#each homepageData}}
-        <h2>{{name}}</h2>
-        <h3>{{accounts}}</h3>
+  <h1>Hello</h1>
+  <div class="row">
+    {{#each clients}}
+      <h2>{{name}}</h2>
+      <ul>
+        {{#each accounts}}
+          <li>{{checkingType}}</li>
+          <li>{{savingType}}</li>
+          <li>{{balance}}</li>
+          <!-- Render other account properties as needed -->
         {{/each}}
-    </div>
+      </ul>
+    {{/each}}
+  </div>
 </div>

@@ -1,60 +1,53 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../../config/connection');
 
-class BusinessClient extends Model {};
+class Client extends Model { };
 
-BusinessClient.init(
+Client.init(
     {
         id: {
             type: DataTypes.INTEGER,
             primaryKey: true,
             autoIncrement: true,
+            allowNull: false
         },
         name: {
-          type: DataTypes.STRING,
-          allowNull: false,
-          unique: false  
-        },
-        email: {
             type: DataTypes.STRING,
             allowNull: false,
             unique: false,
             validate: {
-                isEmail: true,
+                isAlpha: true,
             },
         },
-        password: {
-            type: DataTypes.STRING,
+        phoneNumber: {
+            type: DataTypes.INTEGER(10),
             allowNull: false,
+            unique: false,
             validate: {
-                len: [8]
+                isNumeric: true,
+                len: [10]
             },
         },
-        accountType: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-            references: {
-                model: 'businessAccount',
-                key: 'id'
-            },
-        },
-        identification: {
+        email: {
             type: DataTypes.STRING,
             allowNull: false,
             unique: true,
-            // references: {
-            //     model: 'identification',
-            //     key: 'id'
-            // },
+            validate: {
+                isEmail: true
+            },
         },
-    }, 
+        address: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            unique: false
+        },
+    },
     {
         sequelize,
         timestamps: false,
         freezeTableName: true,
         underscored: true,
-        modelName: 'businessClient',
-    }
-);
+        modelName: 'client'
+    });
 
-module.exports = BusinessClient;
+module.exports = Client;

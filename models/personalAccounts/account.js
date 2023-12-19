@@ -1,34 +1,38 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../../config/connection');
 
-class OnlineBanking extends Model { };
+class Account extends Model { };
 
-OnlineBanking.init(
+Account.init(
     {
         id: {
             type: DataTypes.INTEGER,
             primaryKey: true,
+            allowNull: false,
             autoIncrement: true
         },
-        userName: {
+        checkingType: {
             type: DataTypes.STRING,
-            unique: true,
-            allowNull: false
+            allowNull: true,
+
         },
-        email: {
+        savingType: {
             type: DataTypes.STRING,
-            unique: true,
+            allowNull: true
+        },
+        balance: {
+            type: DataTypes.INTEGER,
             allowNull: false,
             validate: {
-                isEmail: true
+                isNumeric: true
             },
         },
-        password: {
-            type: DataTypes.STRING,
-            unique: true,
-            allowNull: false,
-            validate: {
-                len: [8]
+        clientId: {
+            type: DataTypes.INTEGER,
+            allowNull: true,
+            references: {
+                model: 'client',
+                key: 'id'
             },
         },
     },
@@ -37,8 +41,8 @@ OnlineBanking.init(
         timestamps: false,
         freezeTableName: true,
         underscored: true,
-        modelName: 'onlineBanking',
-    }
-);
+        modelName: 'account'
+    });
 
-module.exports = OnlineBanking;
+
+module.exports = Account;

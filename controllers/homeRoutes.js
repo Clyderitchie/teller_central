@@ -1,31 +1,21 @@
 const router = require('express').Router();
 const withAuth = require('../utils/auth');
-const { PersonalClient, PersonalAccount, PersonalProduct, PersonalService, PersonalLoan, AccountInfo } = require('../models');
+const { Client, Account } = require('../models');
 
 // Renders the login screen for a teller
 router.get('/', async (req, res) => {
     try {
-        const homepage = await AccountInfo.findAll({
+        const client = await Client.findAll({
             include: [{
-                model: PersonalClient,
-                as: 'clients',
-                attributes: ['name'],
-            },
-            {
-                model: PersonalAccount,
-                as: 'client_accounts'
-            }],
+                model: Account,
+                attributes: ['checkingType', 'savingType', 'balance'],
+            },],
         });
-        console.log("HomePage", homepage)
-        const homepageData = homepage.map(info => ({
-            account_owner: info.client.name,
-            account_type: info.account.account_type,
-            balance: info.balance,
-        }));
-        console.log("homepageData", homepageData);
+        const clients = client.map(p => p.get({ plain: true }));
+        console.log('clients', clients);
         res.render('homepage', {
-            homepageData
-        })
+            clients
+        })   
     } catch (err) {
         console.log(err.message);
         res.status(500).json(err);
@@ -39,24 +29,5 @@ router.get('/login', async (req, res) => {
     }
     res.render('login')
 });
-
-router.get('/clients/:id', async (req, res) => {
-    try {
-        const clientData = await PersonalClient.findByPk(req.params.id, {
-            include: {
-                model: PersonalAccount
-            }
-        });
-        const client = clientData.get({ plain: true });
-        console.log('client', client);
-        res.render('singleClient', {
-            ...client
-        })
-    } catch (err) {
-        console.log(err.message);
-        res.status(500).json(err);
-    }
-})
-
 
 module.exports = router;
