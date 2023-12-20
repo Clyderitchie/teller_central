@@ -8,16 +8,18 @@ const loginFormHandler = async (event) => {
     console.log("Teller Password", password)
   
     if (userName && password) {
-      const response = await fetch('/api/tellers/login', {
+      const response = await fetch('/api/teller/login', {
         method: 'POST',
         body: JSON.stringify({ userName, password }),
         headers: { 'Content-Type': 'application/json' },
       });
-  
+      console.log('Response', response);
       if (response.ok) {
+        console.log('Good job you can log in');
         // document.location.replace('/homepage');
       } else {
         alert(response.statusText);
+        console.log('Oh no you cannot login');
       }
     }
   };
