@@ -1,0 +1,23 @@
+[
+    {
+        "checkingType": "Basic",
+        "savingType": "Gold",
+        "balanceChecking": 3500,
+        "balanceSaving": 5000,
+        "clientId": 1
+    },
+    {
+        "checkingType": "Gold",
+        "savingType": "Gold",
+        "balanceChecking": 35000,
+        "balanceSaving": 10000,
+        "clientId": 3
+    },
+    {
+        "checkingType": "Basic",
+        "savingType": "Basic",
+        "balanceChecking": 1500,
+        "balanceSaving": 500,
+        "clientId": 2
+    }
+]

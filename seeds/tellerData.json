@@ -1,0 +1,29 @@
+[
+    {
+        "name": "Robert Ritchie",
+        "employeeId": 1,
+        "userName": "RobertRitchie",
+        "password": "Password1",
+        "position": "Teller",
+        "branch": "tacoma",
+        "email": "robertritchie@bank.com"
+    },
+    {
+        "name": "Conny Thweatt",
+        "employeeId": 2,
+        "userName": "ConnyThweatt",
+        "password": "Password1",
+        "position": "Branch Manager",
+        "branch": "Tacoma",
+        "email": "connythweatt@bank.com"
+    },
+    {
+        "name": "Dylan Miller",
+        "employeeId": 3,
+        "userName": "DylanMiller",
+        "password": "Password1",
+        "position": "District Manager",
+        "branch": "South Sound",
+        "email": "dylanmiller@bank.com"
+    }
+]

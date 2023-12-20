@@ -18,4 +18,17 @@
     </form>
 </div>
 
+<div class="container">
+    <div class="row">
+        <h2>Tellers</h2>
+        {{#each tellers}}
+        <h3>Name: {{name}}</h3>
+        <ul>
+            <li>Position: {{position}}</li>
+            <li>Username: {{userName}}</li>
+        </ul>
+    </div>
+    {{/each}}
+</div>
+
 <script src="/js/login.js"></script>
