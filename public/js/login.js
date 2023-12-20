@@ -3,20 +3,22 @@ const loginFormHandler = async (event) => {
   
     const userName = document.querySelector('#userName').value.trim();
     const password = document.querySelector('#password').value.trim();
+    const teller_id = document.querySelector('#tellerId').value.trim();
 
     console.log("Teller Username", userName),
-    console.log("Teller Password", password)
+    console.log("Teller Password", password),
+    console.log("Teller id", teller_id)
   
     if (userName && password) {
       const response = await fetch('/api/tellers/login', {
         method: 'POST',
-        body: JSON.stringify({ userName, password }),
+        body: JSON.stringify({ userName, password, teller_id }),
         headers: { 'Content-Type': 'application/json' },
       });
       console.log('Response', response);
       if (response.ok) {
         console.log('Good job you can log in');
-        document.location.replace('/homepage');
+        document.location.replace(`/homepage/${id}`);
       } else {
         alert(response.statusText);
         console.log('Oh no you cannot login');
