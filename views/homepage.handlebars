@@ -1,17 +1,45 @@
-<div class="container">
+{{!-- Save this for another handlebar I will make later --}}
+
+{{!-- <div class="container">
   <h1>Client List</h1>
-{{#each clients}}
+  {{#each clients}}
   <div>
     <h2>Client: {{name}}</h2>
     <ul>
       {{#each accounts}}
-        <li>
-          <h3>Account: {{accountType}}</h3>
-          <p>Checking Type: {{checkingType}}</p>
-          <p>Saving Type: {{savingType}}</p>
-          <p>Checking Balance: {{balanceChecking}}</p>
-        </li>
+      <li>
+        <h3>Account: {{accountType}}</h3>
+        <p>Checking Type: {{checkingType}}</p>
+        <p>Saving Type: {{savingType}}</p>
+        <p>Checking Balance: {{balanceChecking}}</p>
+      </li>
       {{/each}}
     </ul>
   </div>
-{{/each}}
+  {{/each}} --}}
+
+
+  <div class="mb-3">
+    <h2>
+      Hello, please login in below to access the Teller Central system
+    </h2>
+    <form class="login-form">
+      <div class="row mb-3">
+        <label for="userName">Username:</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="userName">
+        </div>
+      </div>
+      <div class="row mb-3">
+        <label for="password">Password:</label>
+        <div class="col-sm-10">
+          <input type="password" class="form-control" id="password">
+        </div>
+      </div>
+      <div class="row mb-3">
+      </div>
+      <button type="submit" class="btn btn-outline-dark">Login</button>
+    </form>
+  </div>
+
+  <script src="/js/login.js"></script>

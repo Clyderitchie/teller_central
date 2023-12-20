@@ -8,12 +8,15 @@ const tellerData = require('./tellerData.json');
 const seedDatabase = async () => {
 
     await sequelize.sync({ force: true });
-    
+
     const client = await Client.bulkCreate(clientData);
 
     const account = await Account.bulkCreate(accountData);
 
-    const teller = await Teller.bulkCreate(tellerData);
+    const teller = await Teller.bulkCreate(tellerData, {
+        individualHooks: true,
+        returning: true,
+    });
 
     process.exit(0);
 };

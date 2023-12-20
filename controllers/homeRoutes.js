@@ -4,13 +4,11 @@ const { Client, Account, Teller } = require('../models');
 
 router.get('/', async (req, res) => {
     try {
-        const teller = await Teller.findAll();
-
-        const tellers = teller.map(p => p.get({ plain: true }));
-        console.log('Teller', tellers);
-        res.render('login', {
-            tellers
-        })
+      const tellerData = await Teller.findAll();
+      const teller = tellerData.map(p => p.get({ plain: true }));
+      res.render('homepage', {
+        teller
+      })  
     } catch (err) {
         console.log(err.message);
         res.status(500).json(err);
@@ -18,7 +16,7 @@ router.get('/', async (req, res) => {
 });
 
 // Renders the homepage handlebar 
-router.get('/home', async (req, res) => {
+router.get('/', async (req, res) => {
     try {
         const client = await Client.findAll({
             include:
@@ -41,7 +39,7 @@ router.get('/home', async (req, res) => {
 // login
 router.get('/login', async (req, res) => {
     if (req.session.logged_in) {
-        res.redirect('/homepage');
+        res.redirect('/');
     }
     res.render('login')
 });
