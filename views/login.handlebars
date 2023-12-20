@@ -1,35 +1,30 @@
 {{!-- Homepage for a Teller to login and to access everything --}}
 
-<div class="container ">
-    <form class="login-form">
-        <div class="mb-3 row">
-            <label for="userName" class="col-sm-2 col-form-label">Username:</label>
-            <div class="col-sm-10">
-                <input type="text" class="form-control" id="userName">
-            </div>
-        </div>
-        <div class="mb-3 row">
-            <label for="password" class="col-sm-2 col-form-label">Password:</label>
-            <div class="col-sm-10">
-                <input type="password" class="form-control" id="password">
-            </div>
-        </div>
-        <button class="btn btn-primary btn-large" type="submit">Login</button>
-    </form>
-</div>
-
-<div class="container">
-    <div class="row">
-        <h2>Tellers</h2>
-        {{#each tellers}}
-        <h3>Name: {{name}}</h3>
-        <ul>
-            <li>Position: {{position}}</li>
-            <li>Username: {{userName}}</li>
-            <li>Password: {{password}}</li>
-        </ul>
+  <div class="mb-3">
+    <div class="d-flex justify-content-center">
+      <h2>
+        Hello, please login in below to access the Teller Central system
+      </h2>
     </div>
-    {{/each}}
-</div>
+    <div class="d-block">
+    <form class="login-form">
+      <div class="row mb-3">
+        <label for="userName">Username:</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="userName">
+        </div>
+      </div>
+      <div class="row mb-3">
+        <label for="password">Password:</label>
+        <div class="col-sm-10">
+          <input type="password" class="form-control" id="password">
+        </div>
+      </div>
+      <div class="row mb-3">
+      </div>
+      <button type="submit" class="btn btn-outline-dark">Login</button>
+    </form>
+  </div>
+  </div>
 
-<script src="/js/login.js"></script>
+  <script src="/js/login.js"></script>

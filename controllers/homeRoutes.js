@@ -6,7 +6,7 @@ router.get('/', async (req, res) => {
     try {
       const tellerData = await Teller.findAll();
       const teller = tellerData.map(p => p.get({ plain: true }));
-      res.render('homepage', {
+      res.render('login', {
         teller
       })  
     } catch (err) {
@@ -16,7 +16,7 @@ router.get('/', async (req, res) => {
 });
 
 // Renders the homepage handlebar 
-router.get('/', async (req, res) => {
+router.get('/homepage', async (req, res) => {
     try {
         const client = await Client.findAll({
             include:
