@@ -6,14 +6,14 @@ const { Teller } = require('../../models');
 
 router.post('/', async (req, res) => {
   try {
-    const userData = await Teller.create(req.body);
+    const tellerInfo = await Teller.create(req.body);
 
     req.session.save(() => {
-      req.session.user_id = userData.id; //copy and paste on all routes
+      req.session.teller_id = tellerInfo.id; //copy and paste on all routes
       req.session.logged_in = true;
-      req.session.userName = userData.userName; //copy and paste on all routes
+      req.session.user_name = tellerInfo.userName; //copy and paste on all routes
 
-      res.status(200).json(userData);
+      res.status(200).json(tellerInfo);
     });
   } catch (err) {
     res.status(400).json(err);
@@ -23,25 +23,27 @@ router.post('/', async (req, res) => {
 // Post route for a Teller login
 router.post('/login', async (req, res) => {
   try {
-    const tellerInfo = await Teller.findOne({ where: { userName: req.body.userName }});
+    const tellerInfo = await Teller.findOne({ where: { userName: req.body.userName } });
 
-    if(!tellerInfo) {
+    if (!tellerInfo) {
       res.status(400).json('Incorrect username or password');
       return;
     }
 
     const tellerPassword = await tellerInfo.checkPassword(req.body.password);
 
-    if(!tellerPassword) {
+    if (!tellerPassword) {
       res.status(401).json('Unauthorized to login');
       return;
     }
 
     req.session.save(() => {
       req.session.logged_in = true;
+      req.session.teller_id = tellerInfo.id;
+      req.session.user_name = tellerInfo.userName;
 
+      res.json({ teller: tellerInfo, message: 'You logged in!' });
 
-      res.json({ teller: tellerInfo, message: 'You logged in!'});
     });
   } catch (err) {
     res.status(500).json(err);
@@ -49,4 +51,4 @@ router.post('/login', async (req, res) => {
   }
 });
 
-  module.exports = router;
+module.exports = router;

@@ -5,9 +5,9 @@ const loginFormHandler = async (event) => {
     const password = document.querySelector('#password').value.trim();
     const teller_id = document.querySelector('#tellerId').value.trim();
 
-    console.log("Teller Username", userName),
-    console.log("Teller Password", password),
-    console.log("Teller id", teller_id)
+    console.log(userName),
+    console.log(password),
+    console.log(teller_id)
   
     if (userName && password) {
       const response = await fetch('/api/tellers/login', {
@@ -18,7 +18,7 @@ const loginFormHandler = async (event) => {
       console.log('Response', response);
       if (response.ok) {
         console.log('Good job you can log in');
-        document.location.replace(`/homepage/${id}`);
+        // document.location.replace(`/homepage/${id}`);
       } else {
         alert(response.statusText);
         console.log('Oh no you cannot login');

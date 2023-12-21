@@ -5,11 +5,15 @@ const { Client, Account, Teller } = require('../models');
 // Login page for a teller to log in
 router.get('/', async (req, res) => {
     try {
-      const tellerData = await Teller.findAll();
-      const teller = tellerData.map(p => p.get({ plain: true }));
-      res.render('login', {
-        teller
-      })  
+        const tellerData = await Teller.findAll();
+        const teller = tellerData.map(p => p.get({ plain: true }));
+        console.log("Looking for id of teller", tellerData);
+        res.render('login', {
+            ...teller,
+            logged_in: req.session.logged_in,
+            user_name: req.session.userName,
+            teller_id: req.session.teller_id
+        })
     } catch (err) {
         console.log(err.message);
         res.status(500).json(err);
@@ -29,8 +33,12 @@ router.get('/homepage/:id', async (req, res) => {
     try {
         const tellerData = await Teller.findByPk(req.params.id);
         const teller = tellerData.get({ plain: true });
+        console.log("Looking for id of teller", tellerData);
         res.render('homepage', {
-            ...teller
+            ...teller,
+            logged_in: req.session.logged_in,
+            user_name: req.session.userName,
+            teller_id: req.session.teller_id
         })
     } catch (err) {
         console.log(err.message);
