@@ -29,10 +29,11 @@ router.get('/login', async (req, res) => {
 });
 
 // Renders the homepage handlebar 
-router.get('/homepage/:id', async (req, res) => {
+router.get('/homepage', async (req, res) => {
     try {
-        const tellerData = await Teller.findByPk(req.params.id);
-        const teller = tellerData.get({ plain: true });
+        const tellerData = await Teller.findAll({
+        });
+        const teller = tellerData.map(p => p.get({ plain: true }));
         console.log("Looking for id of teller", tellerData);
         res.render('homepage', {
             ...teller,

@@ -18,7 +18,7 @@ const loginFormHandler = async (event) => {
       console.log('Response', response);
       if (response.ok) {
         console.log('Good job you can log in');
-        // document.location.replace(`/homepage/${id}`);
+        document.location.replace(`/homepage/`);
       } else {
         alert(response.statusText);
         console.log('Oh no you cannot login');
