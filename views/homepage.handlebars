@@ -3,43 +3,130 @@
 <div class="container">
   <div class="row">
     <h2>Homepage screen</h2>
-    <div class="col-12 border border-2 mt-3">
-      <h3>
-        Today's banking news
-      </h3>
+  </div>
+</div>
+
+
+{{!-- Customer Information Section --}}
+{{!-- Includes Accounts, Loans, Services, and Products --}}
+{{!-- Will also include a section for personal Info, Phone number, id, address, email, and such --}}
+<div class="container mt-3">
+
+  {{!-- customers name --}}
+  <h3>
+    Customer name goes here
+  </h3>
+
+  {{!-- Customer account, loan, service, and product information --}}
+  <div class="row border border-4">
+    <div class="col-12 d-block">
+      <div id="navDropdown" class="btn-group" role="group">
+        <button type="button" class="btn btn-light dropdown-toggle text-dark" data-bs-toggle="dropdown"
+          aria-expanded="false">
+          Accounts:
+        </button>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="#">Basic</a></li>
+          <li><a class="dropdown-item" href="#">Plus</a></li>
+          <li><a class="dropdown-item" href="#">Premium</a></li>
+          <li><a class="dropdown-item" href="#">Platinum</a></li>
+          <li><a class="dropdown-item" href="#">Elite</a></li>
+        </ul>
+      </div>
+      <div id="navDropdown" class="btn-group" role="group">
+        <button type="button" class="btn btn-light dropdown-toggle text-dark" data-bs-toggle="dropdown"
+          aria-expanded="false">
+          Loans:
+        </button>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="#">Basic</a></li>
+          <li><a class="dropdown-item" href="#">Plus</a></li>
+          <li><a class="dropdown-item" href="#">Premium</a></li>
+          <li><a class="dropdown-item" href="#">Platinum</a></li>
+          <li><a class="dropdown-item" href="#">Elite</a></li>
+        </ul>
+      </div>
+      <div id="navDropdown" class="btn-group" role="group">
+        <button type="button" class="btn btn-light dropdown-toggle text-dark" data-bs-toggle="dropdown"
+          aria-expanded="false">
+          Products:
+        </button>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="#">Basic</a></li>
+          <li><a class="dropdown-item" href="#">Plus</a></li>
+          <li><a class="dropdown-item" href="#">Premium</a></li>
+          <li><a class="dropdown-item" href="#">Platinum</a></li>
+          <li><a class="dropdown-item" href="#">Elite</a></li>
+        </ul>
+      </div>
+      <div id="navDropdown" class="btn-group" role="group">
+        <button type="button" class="btn btn-light dropdown-toggle text-dark" data-bs-toggle="dropdown"
+          aria-expanded="false">
+          Services:
+        </button>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="#">Basic</a></li>
+          <li><a class="dropdown-item" href="#">Plus</a></li>
+          <li><a class="dropdown-item" href="#">Premium</a></li>
+          <li><a class="dropdown-item" href="#">Platinum</a></li>
+          <li><a class="dropdown-item" href="#">Elite</a></li>
+        </ul>
+      </div>
     </div>
-    <div class="col-12 border border-2 mt-3">
+  </div>
+
+  {{!-- Customer info section --}}
+  <div class="row mt-4 border border-4">
+    <div class="col-12 d-block">
+      <h5>
+        Name: Dale Ritchie
+      </h5>
+      <h5>
+        ID: WDL1234567hyt 
+      </h5>
+      <h5>
+        Address: 123 Main ST, Tacoma WA
+      </h5>
+      <h5>
+        Email: Doit4dale@yahoo.com
+      </h5>
+      <h5>
+        Customer Since: 02/25/2003
+      </h5>
+    </div>
+  </div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+{{!-- <div class="col-12 border border-2 mt-3">
       <h4 class="fw-bolder mt-3">
         Customer Search
       </h4>
       <div class="d-flex justify-content-between mb-3">
-        <div class="col-2 mt-3">
-          <div class="btn-group">
-            <button type="button" class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown"
-              aria-expanded="false">
-              Action
-            </button>
-            <ul class="dropdown-menu">
-              <li>Name</li>
-              <li>Account</li>
-              <li>Debit Card</li>
-              <li>
-                <hr class="dropdown-divider">
-              </li>
-              <li><a class="dropdown-item" href="#">Separated link</a></li>
-            </ul>
+        <form class="search-form">
+          <div class="col-2 mt-3">
+            <div class="btn-group">
+              <button type="button" class="btn btn-primary" aria-expanded="false">
+                Customer Search
+              </button>
+            </div>
           </div>
-        </div>
-        <div class="col-10 mt-3">
-          <input class="form-control" type="text" placeholder="Customer Search" aria-label="default input example">
-        </div>
+          <div class="col-10 mt-3">
+            <input id="customerSearch" class="form-control" type="text" placeholder="Customer Search"
+              aria-label="default input example">
+          </div>
+        </form>
       </div>
-    </div>
-  </div>
-</div>
-
-<div class="container mt--3">
-  <h3>
-    Customer name goes here
-  </h3>
-</div>
+    </div> --}}

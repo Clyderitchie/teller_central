@@ -32,6 +32,10 @@ router.get('/login', async (req, res) => {
 router.get('/homepage', async (req, res) => {
     try {
         const tellerData = await Teller.findAll({
+            include: {
+                model: Client,
+                attributes: ['name', 'age']
+            }
         });
         const teller = tellerData.map(p => p.get({ plain: true }));
         console.log("Looking for id of teller", tellerData);

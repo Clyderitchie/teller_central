@@ -8,4 +8,10 @@ Client.hasMany(Account, {
 
 Account.belongsTo(Client);
 
+Teller.hasMany(Client, {
+    foreignKey: 'clientId'
+});
+
+Client.belongsTo(Teller);
+
 module.exports = { Client, Account, Teller }

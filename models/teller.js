@@ -63,6 +63,15 @@ Teller.init(
                 isEmail: true
             },
         },
+        clientId: {
+            type: DataTypes.INTEGER,
+            allowNull: true,
+            unique: true,
+            references: {
+                model: 'client',
+                key: 'id'
+            }, 
+        }
     },
     {
         hooks: {
