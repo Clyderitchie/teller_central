@@ -1,6 +1,7 @@
 const Client = require('./client');
 const Account = require('./account');
 const Teller = require('./teller');
+const Identification = require('./identification');
 
 Client.hasMany(Account, {
     foreignKey: 'clientId'
@@ -14,4 +15,10 @@ Teller.hasMany(Client, {
 
 Client.belongsTo(Teller);
 
-module.exports = { Client, Account, Teller }
+Client.hasMany(Identification, {
+    foreignKey: 'clientIdType'
+});
+
+Identification.belongsTo(Client);
+
+module.exports = { Client, Account, Teller, Identification }
