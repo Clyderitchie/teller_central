@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const withAuth = require('../utils/auth');
-const { Client, Account, Teller } = require('../models');
+const { Client, Account, Teller, Products, Identification } = require('../models');
 
 // Login page for a teller to log in
 router.get('/', async (req, res) => {
@@ -31,16 +31,13 @@ router.get('/login', async (req, res) => {
 // Renders the homepage handlebar 
 router.get('/homepage', async (req, res) => {
     try {
-        const tellerData = await Teller.findAll({
-            include: {
-                model: Client,
-                attributes: ['name', 'age']
-            }
+        const clientData = await Client.findAll({
+            include: [{ model: Teller }, { model: Products }, { model: Identification }]
         });
-        const teller = tellerData.map(p => p.get({ plain: true }));
-        console.log("Looking for id of teller", tellerData);
+        const client = clientData.map(p => p.get({ plain: true }));
+        console.log("Looking for id of teller", clientData);
         res.render('homepage', {
-            ...teller,
+            ...client,
             logged_in: req.session.logged_in,
             user_name: req.session.userName,
             teller_id: req.session.teller_id
